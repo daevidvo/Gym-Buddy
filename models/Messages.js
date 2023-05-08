@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const User = require('./User');
 
 class Messages extends Model {}
 
@@ -10,7 +11,7 @@ Messages.init(
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
-          },
+        },
         text: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -18,11 +19,27 @@ Messages.init(
                 max: [150],
             },
         },
-        user1: {
-
+        user1Id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: User,
+                key: 'id',
+            },
         },
-        user2: {
-
+        user2Id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: User,
+                key: 'id',
+            },
         },
     },
-)
+    {
+        sequelize,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'Messages',
+    }
+);
+
+module.exports = Messages;
