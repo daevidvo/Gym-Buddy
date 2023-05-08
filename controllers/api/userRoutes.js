@@ -54,12 +54,22 @@ router.post('/logout', AuthUser, (req, res) => {
 
 router.put('/edit', AuthUser, async (req, res) => {
     try {
-        const userData = await User.findbyPk()
+        const userData = await User.update(req.body, {where: {id: req.session.id}})
+
+        res.status(200).json(userData)
+    } catch (err) {
+        res.status(500).json(err)
     }
 })
 
-router.delete('/delete/:id', AuthUser, async (req, res) => {
-    
+router.delete('/delete', AuthUser, async (req, res) => {
+    try {
+        User.destroy({where: {id: req.session.user_id}})
+       
+        res.status(204).end();
+    } catch (err) {
+        res.status(500).json(err)
+    }
 })
 
 module.exports = router
