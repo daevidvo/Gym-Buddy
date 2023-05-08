@@ -1,6 +1,7 @@
+// Import required modules
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const User = require('./User'); // Import the User model to set up a reference
+const User = require('./User'); 
 
 
 class Matches extends Model {} // Define the Matches model

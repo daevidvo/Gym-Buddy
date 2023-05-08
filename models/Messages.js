@@ -1,9 +1,11 @@
+// Import required modules
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const User = require('./User');
 
-class Messages extends Model {}
+class Messages extends Model {} // Define the Messages model
 
+// Define the Messages attributes
 Messages.init(
     {
         id: {
@@ -42,4 +44,5 @@ Messages.init(
     }
 );
 
+// Export the Messages model
 module.exports = Messages;
