@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS gymder_db;
+CREATE DATABASE gymder_db;
