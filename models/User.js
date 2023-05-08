@@ -63,6 +63,11 @@ User.init(
                 min: 18,   // age must be at least 18
             },
         },
+        datePosted: {
+          type: DataTypes.DATEONLY,
+          allowNull: false,
+          defaultValue: DataTypes.NOW,
+        },
     },
     {
        // Define hooks to hash password before creating/updating user
