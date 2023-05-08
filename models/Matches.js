@@ -1,8 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const User = require('./User');
+const User = require('./User'); // Import the User model to set up a reference
 
-class Matches extends Model {}
+
+class Matches extends Model {} // Define the Matches model
 
 Matches.init(
     {
@@ -13,7 +14,7 @@ Matches.init(
             autoIncrement: true,
         },
         user_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.INTEGER, // Set up a reference to the User model
             references: {
                 model: User,
                 key: 'id',
