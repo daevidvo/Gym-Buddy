@@ -82,11 +82,3 @@ User.init(
 );
 
 module.exports = User;
-
-// user_id: {
-//     type: DataTypes.INTEGER,
-//     references: {
-//       model: 'user',
-//       key: 'id',
-//     },
-// },
