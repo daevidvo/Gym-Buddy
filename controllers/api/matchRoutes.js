@@ -5,7 +5,7 @@ const { User, Matches } = require('../../models');
 router.get('/', async (req, res) => {
     try {
       // Get the current user's ID from their session
-      const currentUserId = req.session.userId;
+      const currentUserId = req.session.id;
       
       const matchData = await Matches.findAll({
         where: {
