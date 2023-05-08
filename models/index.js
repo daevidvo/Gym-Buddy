@@ -34,3 +34,5 @@ Messages.belongsTo(User, {
   foreignKey: 'user2_id',
   as: 'recipient',
 });
+
+module.exports = {User, Matches, Messages};
