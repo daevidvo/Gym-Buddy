@@ -1,6 +1,7 @@
 // Import required modules
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const Matches = require('./Matches');
 const User = require('./User');
 
 class Messages extends Model {} // Define the Messages model
@@ -35,6 +36,13 @@ Messages.init(
                 key: 'id',
             },
         },
+        match_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: Matches,
+                key: 'id',
+            }
+        }
     },
     {
         sequelize,
