@@ -6,24 +6,22 @@ router.get('/', async (req, res) => {
     try {
       // Get the current user's ID from their session
       const currentUserId = req.session.userId;
-      // Get all matches where the current user is either user1Id or user2Id
+      
       const matchData = await Matches.findAll({
         where: {
-          [Op.or]: [
-            { user1Id: currentUserId },
-            { user2Id: currentUserId }
-          ]
+           user1Id: currentUserId,
+           user2Id: req.body.user2Id
         },
         include: [
           {
             model: User,
             as: 'user1',
-            attributes: ['id', 'username', 'bio']
+            attributes: ['id', 'username']
           },
           {
             model: User,
             as: 'user2',
-            attributes: ['id', 'username', 'bio']
+            attributes: ['id', 'username']
           }
         ]
       });
