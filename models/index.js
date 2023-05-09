@@ -11,12 +11,12 @@ User.hasMany(Matches, {
 });
 
 User.hasMany(Messages, {
-  foreignKey: 'user1_id',
+  foreignKey: 'user1Id',
   as: 'sent_messages',
 });
 
 User.hasMany(Messages, {
-  foreignKey: 'user2_id',
+  foreignKey: 'user2id',
   as: 'received_messages',
 });
 
@@ -37,12 +37,12 @@ Matches.belongsTo(User, {
 
 // Messages associations
 Messages.belongsTo(User, {
-  foreignKey: 'user1_id',
+  foreignKey: 'user1Id',
   as: 'sender',
 });
 
 Messages.belongsTo(User, {
-  foreignKey: 'user2_id',
+  foreignKey: 'user2Id',
   as: 'recipient',
 });
 
