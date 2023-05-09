@@ -14,17 +14,20 @@ Matches.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        user_id: {
-            type: DataTypes.INTEGER, // Set up a reference to the User model
+        user1Id: {
+            type: DataTypes.INTEGER,
             references: {
                 model: User,
                 key: 'id',
-                },
+            },
         },
-        user_matches: {
+        user2Id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-        }
+            references: {
+                model: User,
+                key: 'id',
+            },
+        },
     },
     {
         
