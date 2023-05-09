@@ -18,8 +18,7 @@ router.get('/', async (req, res) => {
       logged_in: req.session.logged_in
     })
 } catch (err) {
-  console.error(err);
-  res.status(500).json({ message: 'Server error' });
+  res.status(500).json(err);
 }
 });
 
@@ -40,6 +39,16 @@ router.get('/user', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.get('/signup', async (req, res) => {
+  try{
+    res.render('signup', {
+      logged_in: req.session.logged_in
+    })
+  } catch (err) {
+    res.status(500).json(err)
+  }
+})
 
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
