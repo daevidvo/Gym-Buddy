@@ -36,13 +36,17 @@ Messages.init(
                 key: 'id',
             },
         },
-        match_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: Matches,
-                key: 'id',
-            }
-        }
+        created_at: {
+           type: DataTypes.DATE,
+           allowNull: false,
+           defaultValue: DataTypes.NOW,
+        },
+        updated_at: {
+           type: DataTypes.DATE,
+           allowNull: false,
+           defaultValue: DataTypes.NOW,
+        },
+        
     },
     {
         sequelize,
