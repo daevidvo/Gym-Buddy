@@ -1,56 +1,27 @@
 const router = require('express').Router();
-const { User, Message } = require('../models');
+const { User, Messages, Matches } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
     const userData = await User.findAll({
-      include: [
-        {
-          attributes: ['name', 'age', 'bio', 'location'],
-        },
-      ],
+          attributes: {include: ['userName', 'age', 'bio']}
     });
-    res.json(userData);
+    
+    const user = userData.map((data) => data.get({plain: true}))
+
+    if (!user) {
+      res.status(400).json({message: 'error in retrieving user data'})
+    }
+
+    res.render('homepage', {
+      logged_in: req.session.logged_in
+    })
 } catch (err) {
   console.error(err);
   res.status(500).json({ message: 'Server error' });
 }
 });
-
-router.get('/', async (req, res) => {
-    try {
-      // Retrieve user information
-      const user = await User.findByPk(req.user.id, {
-        include: [
-          {
-            attributes: ['name', 'age', 'bio', 'location'],
-          },
-        ],
-      });
-  
-      // Retrieve user's messages
-      const messages = await Message.findAll({
-        where: {
-          userId: req.user.id,
-        },
-      });
-  
-      // Combine user and message data into a single object to send to the client
-      const userData = {
-        user: user,
-        messages: messages,
-      };
-  
-      res.json(userData);
-    } catch (err) {
-      console.error(err);
-      res.status(500).json({ message: 'Server error' });
-    }
-  });
-
-
-
 
 router.get('/user', withAuth, async (req, res) => {
   try {
