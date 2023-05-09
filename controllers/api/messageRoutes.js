@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
     }
 })
 
-router.get('/get', async (req, res) => {
+router.get('/', async (req, res) => {
     try{
         const messageData = await Messages.findAll({where: {
             user1Id: req.session.id,
