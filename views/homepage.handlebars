@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Gymder</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/matches">Matches</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/profile">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<div class="row">
+  <div class="col-auto">
+    <h2>User Profile: {{otherUser.name}}</h2>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3>About {{otherUser.name}}</h3>
+
+   
+    <div class="form-group">
+      <label for="age">Age:</label>
+      <input class="form-input" type="number" id="age" name="age" value="{{otherUser.age}}" disabled />
+    </div>
+    <div class="form-group">
+      <label for="bio">Bio:</label>
+      <textarea class="form-input" id="bio" name="bio" disabled>{{otherUser.bio}}</textarea>
+    </div>
+    <div class="form-group">
+      <label for="training-goals-signup">Training Goals:</label>
+      <textarea class="form-input" id="training-goals-signup" name="training-goals-signup" disabled>{{otherUser.training_goals}}</textarea>
+    </div>
+    <div class="form-group">
+      <button id="like-btn" class="btn btn-primary">Like</button>
+      <button id="dislike-btn" class="btn btn-secondary">Dislike</button>
+    </div>
+  </div>
+</div>
