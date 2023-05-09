@@ -4,7 +4,7 @@
         "email": "david@gymder.com",
         "password": "testing1234",
         "bio": "testingbio_david",
-        "training goals": "testingtraininggoals_david",
+        "training_goals": "testingtraininggoals_david",
         "age": "69"
     },
     {
@@ -12,7 +12,7 @@
         "email": "kaiden@gymder.com",
         "password": "testing1234",
         "bio": "testingbio_kaiden",
-        "training goals": "testingtraininggoals_kaiden",
+        "training_goals": "testingtraininggoals_kaiden",
         "age": "69"
     },
     {
@@ -20,7 +20,7 @@
         "email": "sam@gymder.com",
         "password": "testing1234",
         "bio": "testingbio_sam",
-        "training goals": "testingtraininggoals_sam",
+        "training_goals": "testingtraininggoals_sam",
         "age": "69"
     },
     {
@@ -28,7 +28,7 @@
         "email": "testing1",
         "password": "testing1",
         "bio": "testingbio1",
-        "training goals": "testingtraininggoals1",
+        "training_goals": "testingtraininggoals1",
         "age": "1"
     }
 ]
