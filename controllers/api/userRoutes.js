@@ -10,20 +10,24 @@ router.post('/login', async (req, res) => {
             res.status(400).json({ mesage: 'Invalid email or password' })
             return
         }
-
+        
         const validPassword = await userData.checkPassword(req.body.password)
+        
+        const user = userData.get({plain: true})
 
         if (!validPassword) {
             res.status(400).json({ message: 'Invalid email or password' })
             return
         }
 
+        console.log(user)
+
         req.session.save(() => {
-            req.session.user_id = userData.id
+            req.session.user_id = user.id
             req.session.logged_in = true
 
+            res.status(200).json({ message: 'Logged in' })
         })
-        res.status(200).json({ message: 'Logged in' })
     } catch (err) {
         res.status(500).json(err)
     }
@@ -35,6 +39,8 @@ router.post('/signup', async (req, res) => {
         const userData = await User.create(req.body)
 
         console.log(userData)
+
+        const user = userData.get({plain: true})
 
         req.session.save(() => {
             req.session.user_id = userData.id
@@ -55,11 +61,26 @@ router.post('/logout', AuthUser, (req, res) => {
     }
 })
 
-router.put('/edit', AuthUser, async (req, res) => {
+// PROFILE UPDATE ISN'T WORKING CURRENTLY 
+// =======================================================
+// REMEMBER TO WORK ON THIS
+router.put('/edit', async (req, res) => {
     try {
-        const userData = await User.update(req.body, {where: {id: req.session.id}})
+        console.log('testing')
+        console.log(req.session.id)
+        const userData = await User.update({
+            userName: req.body.userName,
+            email: req.body.email,
+            bio: req.body.bio,
+            age: req.body.age,
+            training_goals: req.body.training_goals
+        }, 
+        {
+            where: {id: req.session.id}
+        })
+        console.log(req.body)
 
-        res.status(200).json(userData)
+        res.status(200).json({message: 'user info successfully updated'})
     } catch (err) {
         res.status(500).json(err)
     }

@@ -1,23 +1,23 @@
 const profileFormHandler = async (event) => {
     event.preventDefault();
   
-    const name = document.querySelector('#name').value.trim();
+    const userName = document.querySelector('#username').value.trim();
     const email = document.querySelector('#email').value.trim();
-    const age = document.querySelector('#age').value.trim();
     const bio = document.querySelector('#bio').value.trim();
-    const training_goals = document.querySelector('#training-goals-signup').value.trim();
+    const age = document.querySelector('#age').value.trim();
+    const training_goals = document.querySelector('#goals').value.trim();
   
-    if (name && email && age && bio && training_goals) {
-      const response = await fetch(`/api/users/profile`, {
+    if (userName && email && age && bio && training_goals) {
+      const response = await fetch(`/api/users/edit`, {
         method: 'PUT',
-        body: JSON.stringify({ name, email, age, bio, training_goals }),
+        body: JSON.stringify({ userName, email, bio, age, training_goals }),
         headers: {
           'Content-Type': 'application/json',
         },
       });
   
       if (response.ok) {
-        document.location.replace('/profile');
+        document.location.reload();
       } else {
         alert('Failed to update profile');
       }

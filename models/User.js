@@ -44,17 +44,11 @@ User.init(
         },
         bio: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [50,260], // bio must be between 50 and 260 characters long
-            },
+            allowNull: false
         },
         training_goals: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [10,75], // training goals must be between 10 and 75 characters long
-            },
+            allowNull: false
         },
         age: {
             type: DataTypes.INTEGER,
