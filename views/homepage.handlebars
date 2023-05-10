@@ -1,29 +1,33 @@
-<div class="row">
-  <div class="col-auto">
-    <h2>User Profile: {{otherUser.name}}</h2>
+{{#each otherUser}}
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <div class="card" style="border-radius: 15px;">
+        <div class="card-body p-5">
+          <h2 class="text-uppercase text-center mb-5">testing user</h2>
+
+          <div class="card text-center">
+            <div class="card-header">
+              <h4>Age: {{age}}</h4>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Bio</h5>
+              <p class="card-text">{{bio}}</p>
+            </div>
+            <div class="card-footer text-muted">
+              <h5>Training Goals</h5>
+              <p>{{training_goals}}</p>
+            </div>
+          </div>
+          
+            <div class="d-flex justify-content-center mt-3">
+              <button type="button" class="btn btn-success mx-2" id="likeButton" style="width: 100px">Like</button>
+              <button type="button" class="btn btn-dark mx-2" id="dislikeButton" style="width: 100px">Dislike</button>
+            </div>
+
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
-<div class="row mt-4">
-  <div class="col-md-6">
-    <h3>About {{otherUser.name}}</h3>
-
-   
-    <div class="form-group">
-      <label for="age">Age:</label>
-      <input class="form-input" type="number" id="age" name="age" value="{{otherUser.age}}" disabled />
-    </div>
-    <div class="form-group">
-      <label for="bio">Bio:</label>
-      <textarea class="form-input" id="bio" name="bio" disabled>{{otherUser.bio}}</textarea>
-    </div>
-    <div class="form-group">
-      <label for="training-goals-signup">Training Goals:</label>
-      <textarea class="form-input" id="training-goals-signup" name="training-goals-signup" disabled>{{otherUser.training_goals}}</textarea>
-    </div>
-    <div class="form-group">
-      <button id="like-btn" class="btn btn-primary">Like</button>
-      <button id="dislike-btn" class="btn btn-secondary">Dislike</button>
-    </div>
-  </div>
-</div>
+{{/each}}
