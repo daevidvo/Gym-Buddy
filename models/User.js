@@ -22,6 +22,7 @@ User.init(
         userName: {
           type: DataTypes.STRING,
           allowNull: false,
+          unique: true,
           validate: {
             len: [2],
           }
@@ -62,12 +63,7 @@ User.init(
                 isNumeric: true,
                 min: 18,   // age must be at least 18
             },
-        },
-        datePosted: {
-          type: DataTypes.DATEONLY,
-          allowNull: false,
-          defaultValue: DataTypes.NOW,
-        },
+        }
     },
     {
        // Define hooks to hash password before creating/updating user
@@ -81,7 +77,6 @@ User.init(
               return updatedUserData;
             },
           },
-
     sequelize,
     timestamps: false,
     freezeTableName: true,
