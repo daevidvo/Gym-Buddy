@@ -10,7 +10,7 @@ const withAuth = require("../../utils/auth.js");
 // middlware
 router.use("/profile", profileRoutes);
 router.use("/message", messageRoutes);
-router.use("/match", matchRoutes);
+router.use("/matches", matchRoutes);
 router.use('/test', testRoute)
 
 // home route

@@ -25,5 +25,5 @@ const profileFormHandler = async (event) => {
   };
   
   document
-    .querySelector('.profile-form')
+    .querySelector('#profile_form')
     .addEventListener('submit', profileFormHandler);

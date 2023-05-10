@@ -61,13 +61,9 @@ router.post('/logout', AuthUser, (req, res) => {
     }
 })
 
-// PROFILE UPDATE ISN'T WORKING CURRENTLY 
-// =======================================================
-// REMEMBER TO WORK ON THIS
 router.put('/edit', async (req, res) => {
     try {
-        console.log('testing')
-        console.log(req.session.id)
+        console.log(req.session.user_id)
         const userData = await User.update({
             userName: req.body.userName,
             email: req.body.email,
@@ -76,9 +72,8 @@ router.put('/edit', async (req, res) => {
             training_goals: req.body.training_goals
         }, 
         {
-            where: {id: req.session.id}
+            where: {id: req.session.user_id}
         })
-        console.log(req.body)
 
         res.status(200).json({message: 'user info successfully updated'})
     } catch (err) {
