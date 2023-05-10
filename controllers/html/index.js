@@ -3,6 +3,7 @@ const router = require("express").Router();
 const messageRoutes = require("./messageRoutes.js");
 const matchRoutes = require("./matchRoutes.js");
 const profileRoutes = require("./profileRoutes.js");
+const testRoute = require('./testRoute.js')
 const { User, Messages, Matches } = require("../../models");
 const withAuth = require("../../utils/auth.js");
 
@@ -10,6 +11,7 @@ const withAuth = require("../../utils/auth.js");
 router.use("/profile", profileRoutes);
 router.use("/message", messageRoutes);
 router.use("/match", matchRoutes);
+router.use('/test', testRoute)
 
 // home route
 router.get("/", withAuth, async (req, res) => {
