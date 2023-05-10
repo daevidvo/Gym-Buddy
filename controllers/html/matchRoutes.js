@@ -13,7 +13,7 @@ router.get('/', withAuth, async (req, res) => {
           { connect_id: req.session.connect_id }
         ]
       },
-      include: [{ model: User, as: 'user_id' }, { model: Matches, as: 'connect_id' }]
+      include: [{ model: User, as: 'user1' }, { model: Matches, as: 'user2' }]
     });
     console.log(userMatches)
     res.render('matches', { logged_in: true, userMatches });
