@@ -8,15 +8,16 @@ router.get('/', withAuth, async (req, res) => {
     const userMatches = await Matches.findAll({
       where: { 
         [Op.or]: [
-            console.log(Matches),
           { user_id: req.session.user_id },
-          { connect_id: req.session.connect_id }
+          { connect_id: req.session.user_id }
         ]
       },
-      include: [{ model: User, as: 'user1' }, { model: Matches, as: 'user2' }]
+      include: [{ model: User, attributes: {exclude:['password', 'email']}}],
+      
     });
-    console.log(userMatches)
-    res.render('matches', { logged_in: true, userMatches });
+    console.log(JSON.stringify(userMatches, null, 2)); 
+    const matchData = JSON.stringify(userMatches, null, 2);
+    res.render('matches', { logged_in: true, userMatches, matchData });
   } catch (err) {
     res.status(500).json(err);
   }
