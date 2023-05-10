@@ -1,36 +1,56 @@
- <div class="col-md-6">
-    <h2>Signup</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <div class="card" style="border-radius: 15px;">
+        <div class="card-body p-5">
+          <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-    <form class="form signup-form">
-      <div class="form-group">
-        <label for="name-signup">name:</label>
-        <input class="form-input" type="text" id="name-signup" />
+          <form id="signup_form">
+
+            <div class="form-outline mb-4">
+              <input type="text" id="signup_username" class="form-control form-control-lg">
+              <label class="form-label" for="signup_username" style="margin-left: 0px;">Username</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="email" id="signup_email" class="form-control form-control-lg">
+              <label class="form-label" for="signup_email" style="margin-left: 0px;">Email</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="password" id="signup_password" class="form-control form-control-lg">
+              <label class="form-label" for="signup_password" style="margin-left: 0px;">Password</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="text" id="signup_bio" class="form-control form-control-lg">
+              <label class="form-label" for="signup_bio" style="margin-left: 0px;">Bio</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="number" id="signup_age" class="form-control form-control-lg">
+              <label class="form-label" for="signup_age" style="margin-left: 0px;">Age</label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="text" id="signup_goals" class="form-control form-control-lg">
+              <label class="form-label" for="signup_goals" style="margin-left: 0px;">Training Goals</label>
+            </div>
+
+            <div class="d-flex justify-content-center">
+              <button type="submit"
+                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+            </div>
+
+            <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="/profile/login"
+                class="fw-bold text-body"><u>Login here</u></a></p>
+
+          </form>
+
+        </div>
       </div>
-      <div class="form-group">
-        <label for="email-signup">email:</label>
-        <input class="form-input" type="text" id="email-signup" />
-      </div>
-      <div class="form-group">
-        <label for="password-signup">password:</label>
-        <input class="form-input" type="password" id="password-signup" />
-      </div>
-      <div class="form-group">
-        <label for="bio-signup">bio:</label>
-        <input class="form-input" type="text" id="bio-signup" />
-      </div>
-      <div class="form-group">
-        <label for="training-goals-signup">training goals:</label>
-        <input class="form-input" type="text" id="training-goals-signup" />
-      </div>
-      <div class="form-group">
-        <label for="age-signup">age:</label>
-        <input class="form-input" type="text" id="age-signup" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">signup</button>
-      </div>
-    </form>
+    </div>
   </div>
 </div>
 
-<script src="./js/signup.js"></script>
+<script src="/js/signup.js"></script>
