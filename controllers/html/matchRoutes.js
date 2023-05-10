@@ -1,23 +1,39 @@
-const router = require('express').Router();
-const { Matches, User } = require('../../models');
-const withAuth = require('../../utils/auth');
-const { Op } = require('sequelize');
+const router = require("express").Router();
+const { Matches, User } = require("../../models");
+const withAuth = require("../../utils/auth");
+const { Op } = require("sequelize");
 
-router.get('/', withAuth, async (req, res) => {
+router.get("/", withAuth, async (req, res) => {
   try {
+    console.log(req.session.user_id);
     const userMatches = await Matches.findAll({
-      where: { 
+      where: {
         [Op.or]: [
           { user_id: req.session.user_id },
-          { connect_id: req.session.user_id }
-        ]
+          { connect_id: req.session.user_id },
+        ],
       },
-      include: [{ model: User, attributes: {exclude:['password', 'email']}}],
-      
+      include: [
+        {
+          model: User,
+          attributes: {
+            exclude: ["password", "email"],
+          }
+        },
+      ]
     });
-    console.log(JSON.stringify(userMatches, null, 2)); 
-    const matchData = JSON.stringify(userMatches, null, 2);
-    res.render('matches', { logged_in: true, userMatches, matchData });
+
+    const matchData = JSON.parse(JSON.stringify(userMatches, null, 2));
+
+    for(let x=0;x<matchData.length;x+=1) {
+        if(req.session.user_id === matchData[x].user_id) {
+            matchData.splice(x, 1)
+        }
+    }
+
+    console.log(matchData)
+
+    res.render("matches", { logged_in: true, matchData });
   } catch (err) {
     res.status(500).json(err);
   }

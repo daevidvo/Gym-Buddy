@@ -20,8 +20,6 @@ router.post('/login', async (req, res) => {
             return
         }
 
-        console.log(user)
-
         req.session.save(() => {
             req.session.user_id = user.id
             req.session.logged_in = true
@@ -35,10 +33,7 @@ router.post('/login', async (req, res) => {
 
 router.post('/signup', async (req, res) => {
     try {
-        console.log(req.body)
         const userData = await User.create(req.body)
-
-        console.log(userData)
 
         const user = userData.get({plain: true})
 
@@ -63,7 +58,6 @@ router.post('/logout', AuthUser, (req, res) => {
 
 router.put('/edit', async (req, res) => {
     try {
-        console.log(req.session.user_id)
         const userData = await User.update({
             userName: req.body.userName,
             email: req.body.email,
