@@ -4,13 +4,13 @@ const sequelize = require('../config/connection');
 const Matches = require('./Matches');
 const User = require('./User');
 
-class UserMessages extends Model {} // Define the Messages model
+class Messages extends Model {} // Define the Messages model
 
 
 // REMOVE MESSAGES
 
 // Define the Messages attributes
-UserMessages.init(
+Messages.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -62,8 +62,8 @@ UserMessages.init(
         sequelize, // Pass the sequelize connection to the Matches model
         freezeTableName: true, // Set the table name to match the model name
         underscored: true, // Use underscores instead of camelCase in column names
-        modelName: 'UserMessages', // Set the model name
+        modelName: 'Messages', // Set the model name
     }
 );
 
-module.exports = UserMessages; // Export the UserMessages model
+module.exports = Messages; // Export the Messages model
