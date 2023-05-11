@@ -16,8 +16,9 @@ router.use('/test', testRoute)
 // home route
 router.get("/", withAuth, async (req, res) => {
   try {
+    
     const userData = await User.findAll({
-      attributes: { include: ["userName", "age", "bio"] },
+      attributes: { exclude: ["email", "password"] },
     });
 
     const user = userData.map((data) => data.get({ plain: true }));
@@ -25,10 +26,11 @@ router.get("/", withAuth, async (req, res) => {
     if (!user) {
       res.status(400).json({ message: "error in retrieving user data" });
     }
-
     res.render("homepage", {
       logged_in: req.session.logged_in,
+      user
     });
+    console.log(user)
   } catch (err) {
     res.status(500).json(err);
   }
