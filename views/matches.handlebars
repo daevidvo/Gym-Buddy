@@ -3,9 +3,9 @@
     <div class="col-9 mx-auto text-center">
       <h2>Your Matches</h2>
       
-      <div class="list-group text-left">
+      <div class="list-group text-left matchesList">
         {{#each matchData}}
-        <button class="list-group-item list-group-item-action" data-match_id="{{userName}}">{{User.userName}}</button>
+        <button type="button" class="list-group-item list-group-item-action" data-match_id="{{id}}">{{User.userName}}</button>
         {{/each}}
       </div>
 
@@ -13,22 +13,4 @@
   </div>
 </div>
 
-
-
-  {{!-- {{#if matchedUsers}}
-  {{#each matchedUsers}}
-  <div class="matched-user">
-    <a href="/messages/{{_id}}">
-      <h3>{{name}}</h3>
-    </a>
-    {{#if profilePicture}}
-    <img src="{{profilePicture}}" alt="Profile Picture" />
-    {{/if}}
-    <p>{{bio}}</p>
-    <p>Age: {{age}}</p>
-    <p>Training Goals: {{training_goals}}</p>
-  </div>
-  {{/each}}
-  {{else}}
-  <p>You don't have any matches yet!</p>
-  {{/if}} --}}
+<script src="/js/matches.js"></script>
