@@ -3,7 +3,7 @@
     <div class="col-9 mx-auto">
       <div class="card" style="border-radius: 15px;min-height: 500px">
         <div class="card-body p-5">
-          <h2 class="text-uppercase text-center mb-5">Conversation with {{user2}}</h2>
+          <h2 class="text-uppercase text-center mb-5">Conversation with {{user1}}</h2>
 
           <ul class="list-group" id="messagesList" style="min-height:500px">
           </ul>
@@ -31,8 +31,7 @@
 <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"
   integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
 <script>
-  const matchID = {{{ matchID }}}
-  const socket = io(`ws://localhost:3002/`);
+  const socket = io('ws://localhost:3002/');
 
   let messages = document.getElementById('messagesList');
   let form = document.getElementById('message_form');

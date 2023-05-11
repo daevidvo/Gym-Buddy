@@ -30,7 +30,6 @@ router.get("/", withAuth, async (req, res) => {
       logged_in: req.session.logged_in,
       user
     });
-    console.log(user)
   } catch (err) {
     res.status(500).json(err);
   }

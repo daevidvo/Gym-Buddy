@@ -41,7 +41,6 @@ const io = require('socket.io')(http, {
 io.on("connection", (socket) => {
     console.log('connected')
   socket.on("chat message", (msg) => {
-    console.log(msg)
     io.emit("chat message", msg);
   });
 });
