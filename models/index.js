@@ -4,7 +4,6 @@ const Matches = require('./Matches');
 
 // User associations
 User.hasMany(Matches, {
-  foreignKey: 'user_id',
   onDelete: 'CASCADE',
 });
 

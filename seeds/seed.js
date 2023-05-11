@@ -15,8 +15,6 @@ const seedData = async () => {
 
     console.log('===========SEEDING MATCHES===========')
     const matches = await Matches.bulkCreate(matchData, {
-        individualHooks: true,
-        returning: true
     })
 
     process.exit(0);
