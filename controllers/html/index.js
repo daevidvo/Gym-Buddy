@@ -21,14 +21,15 @@ router.get("/", withAuth, async (req, res) => {
       attributes: { exclude: ["email", "password"] },
     });
 
-    const user = userData.map((data) => data.get({ plain: true }));
+    const users = userData.map((data) => data.get({ plain: true }));
 
-    if (!user) {
+    if (!users) {
       res.status(400).json({ message: "error in retrieving user data" });
     }
+
     res.render("homepage", {
       logged_in: req.session.logged_in,
-      user
+      users
     });
   } catch (err) {
     res.status(500).json(err);

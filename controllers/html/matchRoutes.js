@@ -5,7 +5,6 @@ const { Op } = require("sequelize");
 
 router.get("/", withAuth, async (req, res) => {
   try {
-    console.log(req.session.user_id);
     const userMatches = await Matches.findAll({
       where: {
         [Op.or]: [
@@ -50,7 +49,6 @@ router.get("/:id", async (req, res) => {
         }
     })
     const user1 = user1Data.get({plain: true})
-    console.log(user1)
     
     const user2Data = await User.findByPk(match.connect_id, {
         attributes: {
@@ -58,8 +56,6 @@ router.get("/:id", async (req, res) => {
         }
     })
     const user2 = user2Data.get({plain: true})
-    console.log(user2)
-
 
     res.render("messages", {
         user2: user2.userName,

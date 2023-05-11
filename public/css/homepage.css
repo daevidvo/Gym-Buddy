@@ -1,0 +1,25 @@
+.users {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.1 ease-in-out;
+}
+
+.loaded.users {
+    opacity: 1;
+}
+
+.userCard {
+    overflow: hidden;
+    /* position: absolute; */
+    will-change: transform;
+    transition: all 0.3s ease-in-out;
+    cursor: grab
+}
+
+.moving.userCard {
+    transition: none;
+    cursor: grabbing;
+}
