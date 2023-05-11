@@ -51,7 +51,6 @@ async function startServer() {
   await sequelize.sync({ force: false });
   const server = app.listen(PORT, () => console.log(`App listening on ${PORT}`));
 
-  console.log(server);
   const io = require("socket.io")(server);
 
   io.on("connection", (socket) => {
