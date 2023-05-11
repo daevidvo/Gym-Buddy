@@ -59,7 +59,8 @@ router.get("/:id", async (req, res) => {
 
     res.render("messages", {
         user2: user2.userName,
-        user1: user1.userName
+        user1: user1.userName,
+        logged_in: req.session.logged_in
     }
     );
   } catch (err) {
