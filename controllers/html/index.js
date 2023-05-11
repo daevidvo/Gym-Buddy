@@ -9,7 +9,7 @@ const withAuth = require("../../utils/auth.js");
 
 // middlware
 router.use("/profile", profileRoutes);
-router.use("/message", messageRoutes);
+router.use("/messages", messageRoutes);
 router.use("/matches", matchRoutes);
 router.use('/test', testRoute)
 
@@ -30,7 +30,6 @@ router.get("/", withAuth, async (req, res) => {
       logged_in: req.session.logged_in,
       user
     });
-    console.log(user)
   } catch (err) {
     res.status(500).json(err);
   }

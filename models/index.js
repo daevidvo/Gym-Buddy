@@ -2,7 +2,6 @@
 const User = require('./User');
 const Messages = require('./Messages');
 const Matches = require('./Matches');
-const UserMessages = require ('./UserMessages');
 
 // User associations
 User.hasMany(Matches, {
@@ -18,16 +17,6 @@ User.hasMany(Messages, {
 User.hasMany(Messages, {
   foreignKey: 'user2id',
   as: 'received_messages',
-});
-
-User.hasMany(UserMessages, {
-  foreignKey: 'user1Id',
-  as: 'sent_user_messages',
-});
-  
-User.hasMany(UserMessages, {
-  foreignKey: 'user2Id',
-  as: 'received_user_messages',
 });
 
 // Matches associations
@@ -46,25 +35,5 @@ Messages.belongsTo(User, {
   as: 'recipient',
 });
 
-Messages.hasMany(UserMessages, {
-  foreignKey: 'message_id',
-  as: 'user_messages',
-});
 
-// UserMessages associations
-UserMessages.belongsTo(User, {
-  foreignKey: 'user1Id',
-  as: 'sender',
-});
-
-UserMessages.belongsTo(User, {
-  foreignKey: 'user2Id',
-  as: 'recipient',
-});
-
-UserMessages.belongsTo(Messages, {
-  foreignKey: 'message_id',
-  as: 'message',
-});
-
-module.exports = {User, Matches, Messages, UserMessages};
+module.exports = {User, Matches, Messages};

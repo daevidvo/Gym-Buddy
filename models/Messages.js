@@ -4,23 +4,16 @@ const sequelize = require('../config/connection');
 const Matches = require('./Matches');
 const User = require('./User');
 
-class Messages extends Model {} // Define the Messages model
+class UserMessages extends Model {} // Define the Messages model
 
 // Define the Messages attributes
-Messages.init(
+UserMessages.init(
     {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
-        },
-        text: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                max: [150],
-            },
         },
         user1Id: {
             type: DataTypes.INTEGER,
@@ -36,6 +29,13 @@ Messages.init(
                 key: 'id',
             },
         },
+        text: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                max: [150],
+            },
+        },
         created_at: {
            type: DataTypes.DATE,
            allowNull: false,
@@ -46,15 +46,21 @@ Messages.init(
            allowNull: false,
            defaultValue: DataTypes.NOW,
         },
-        
+        match_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: Matches,
+                key: 'id',
+            },
+        },
     },
     {
-        sequelize,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'Messages',
+        
+        sequelize, // Pass the sequelize connection to the Matches model
+        freezeTableName: true, // Set the table name to match the model name
+        underscored: true, // Use underscores instead of camelCase in column names
+        modelName: 'UserMessages', // Set the model name
     }
 );
 
-// Export the Messages model
-module.exports = Messages;
+module.exports = UserMessages; // Export the UserMessages model
