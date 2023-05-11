@@ -25,6 +25,13 @@ router.get("/", withAuth, async (req, res) => {
       res.status(400).json({ message: "error in retrieving user data" });
     }
 
+    // stops the user from seeing their own profile in the homepage
+    for (let x=0;x<users.length;x+=1) {
+      if (req.session.user_id === users[x].id) {
+        users.splice(x, 1)
+      }
+    }
+
     res.render("homepage", {
       logged_in: req.session.logged_in,
       users
