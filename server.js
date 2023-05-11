@@ -32,19 +32,6 @@ const sess = {
   }),
 };
 
-// socket
-const http = require('http').Server(app);
-const io = require('socket.io')(http, {
-    cors: { origin: '*' }
-});
-
-io.on("connection", (socket) => {
-    console.log('connected')
-  socket.on("chat message", (msg) => {
-    io.emit("chat message", msg);
-  });
-});
-
 app.use(session(sess));
 
 // handlebars engine
@@ -62,8 +49,20 @@ app.use(routes);
 
 async function startServer() {
   await sequelize.sync({ force: false });
-  app.listen(PORT, () => console.log(`App listening on ${PORT}`));
-  http.listen(3002, () => console.log(`HTTP listening on 3002`))
+  const server = app.listen(PORT, () => console.log(`App listening on ${PORT}`));
+
+  console.log(server);
+  const io = require("socket.io")(server);
+
+  io.on("connection", (socket) => {
+    console.log("connected");
+    socket.on("chat message", (msg) => {
+      io.emit("chat message", msg);
+    });
+  });
 }
+
+// socket
+// const http = require('http').Server(app);
 
 startServer();
