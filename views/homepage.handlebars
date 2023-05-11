@@ -1,5 +1,8 @@
-{{#each user}}
-<div class="container">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js" integrity="sha512-UXumZrZNiOwnTcZSHLOfcTs0aos2MzBWHXOHOuB0J/R44QB0dwY5JgfbvljXcklVf65Gc4El6RjZ+lnwd2az2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div class="users">
+{{#each users}}
+<div class="container userCard">
   <div class="row">
     <div class="col-6 mx-auto">
       <div class="card" style="border-radius: 15px;">
@@ -21,8 +24,8 @@
           </div>
           
             <div class="d-flex justify-content-center mt-3">
-              <button type="button" class="btn btn-success mx-2" id="likeButton" style="width: 100px">Like</button>
-              <button type="button" class="btn btn-dark mx-2" id="dislikeButton" style="width: 100px">Dislike</button>
+              <button type="button" class="btn btn-success mx-2" id="likeButton" style="width: 100px" data-like="{{id}}">Like</button>
+              <button type="button" class="btn btn-dark mx-2" id="dislikeButton" style="width: 100px" data-dislike="{{id}}">Dislike</button>
             </div>
 
         </div>
@@ -31,3 +34,7 @@
   </div>
 </div>
 {{/each}}
+</div>
+
+<link rel="stylesheet" href="/css/homepage.css">
+<script defer src="/js/homepage.js"></script>

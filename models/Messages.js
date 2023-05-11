@@ -6,6 +6,9 @@ const User = require('./User');
 
 class UserMessages extends Model {} // Define the Messages model
 
+
+// REMOVE MESSAGES
+
 // Define the Messages attributes
 UserMessages.init(
     {
