@@ -1,15 +1,13 @@
 // modules and imports
 const router = require("express").Router();
-const messageRoutes = require("./messageRoutes.js");
 const matchRoutes = require("./matchRoutes.js");
 const profileRoutes = require("./profileRoutes.js");
 const testRoute = require('./testRoute.js')
-const { User, Messages, Matches } = require("../../models");
+const { User, Matches } = require("../../models");
 const withAuth = require("../../utils/auth.js");
 
 // middlware
 router.use("/profile", profileRoutes);
-router.use("/messages", messageRoutes);
 router.use("/matches", matchRoutes);
 router.use('/test', testRoute)
 
