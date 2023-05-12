@@ -1,3 +1,19 @@
+// match functionality
+
+const matchFunction = (id) => {
+    let connect_id = id
+    const response = fetch('/api/match/', {
+        method: 'POST',
+        body: JSON.stringify({connect_id}),
+        headers: { "Content-Type": "application/json" }
+    })
+
+    if (!response.status == 200) {
+        alert(`Please try again \n Error: ${response.statusText}`)
+    }
+}
+
+
 // hammerjs
 
 let allCards = document.querySelectorAll('.userCard')
@@ -42,7 +58,7 @@ allCards.forEach((el) => {
     hammerjs.on('panend', (event) => {
         el.classList.remove('moving')
 
-        let moveOutWidth = document.body.clientWidth
+        const moveOutWidth = document.body.clientWidth
         let keepCard = Math.abs(event.deltaX) < 80 || Math.abs(event.velocityX) < 0.5;
 
         event.target.classList.toggle('removed', !keepCard)
@@ -64,17 +80,45 @@ allCards.forEach((el) => {
             if(toX > 0) {
                 const connect_id = event.target.querySelector('[data-id]').dataset.id
 
-                const response = fetch('/api/match/', {
-                    method: 'POST',
-                    body: JSON.stringify({connect_id}),
-                    headers: { "Content-Type": "application/json" }
-                })
-        
-                if (!response.status == 200) {
-                    alert(`Please try again \n Error: ${response.statusText}`)
-                }
+                matchFunction(connect_id)
             }
 
         }
     })
 })
+
+// like button event listener
+document.querySelector('.users').addEventListener('click', (event) => {
+    event.stopPropagation();
+
+    let userCards = document.querySelectorAll('.userCard:not(.removed)')
+    const moveOutWidth = document.body.clientWidth
+    let card;
+
+    for (let x=0;x<userCards.length;x+=1) {
+        if ((event.target === userCards[x].children[1].children[0].children[0]) || (event.target === userCards[x].children[1].children[0].children[1])) {
+            card = userCards[x]
+            break;
+        }
+    }
+
+    if (event.target.dataset.like) {
+        const connect_id = event.target.dataset.like
+        matchFunction(connect_id)
+
+        if (!userCards.length) {
+            return;
+        }
+
+        card.classList.add('removed')
+        card.style.transform = `translate(${moveOutWidth}px)`
+
+
+        initCards();
+    } else if (event.target.dataset.dislike) {
+        card.classList.add('removed')
+        card.style.transform = `translate(-${moveOutWidth}px)`
+        initCards();
+    }
+})
+
