@@ -64,8 +64,5 @@ async function startServer() {
   });
 }
 
-// socket
-// const http = require('http').Server(app);
-
 // Call the startServer function to start the server and Socket.IO
 startServer();

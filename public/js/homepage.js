@@ -90,7 +90,6 @@ allCards.forEach((el) => {
 
                 matchFunction(connect_id)
             }
-
         }
     })
 })
