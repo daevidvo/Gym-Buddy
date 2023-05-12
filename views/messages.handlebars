@@ -2,18 +2,20 @@
   <div class="row">
     <div class="col-9 mx-auto">
       <div class="card" style="border-radius: 15px;min-height: 500px">
+        <!-- Title of the chat window -->
         <div class="card-body p-5">
           <h2 class="text-uppercase text-center mb-5">Conversation with {{user1}}</h2>
-
+           <!-- List of messages displayed in the chat window -->
           <ul class="list-group" id="messagesList" style="min-height:500px">
           </ul>
 
+           <!-- Form to send new messages -->
           <form id="message_form" style="position:relative;bottom:0px">
             <div class="form-outline mt-4">
               <input type="text" id="user_text" class="form-control form-control-lg">
               <label class="form-label" for="user_text" style="margin-left: 0px;"></label>
             </div>
-
+            <!-- Send button -->
             <div class="d-flex justify-content-center">
               <div class="col-6">
                 <button type="submit"
@@ -28,15 +30,19 @@
   </div>
 </div>
 
+<!-- Load Socket.IO client library -->
 <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"
   integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
 <script>
+  // Connect to the server using Socket.IO
   const socket = io();
 
+  // Get references to the messages list, form, and input field
   let messages = document.getElementById('messagesList');
   let form = document.getElementById('message_form');
   let input = document.getElementById('user_text');
 
+  // Send message when form is submitted
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (input.value) {
@@ -45,6 +51,7 @@
     }
   });
 
+  // Display incoming messages in the chat window
   socket.on('chat message', function (msg) {
     let item = document.createElement('li');
     item.classList.add('list-group-item')

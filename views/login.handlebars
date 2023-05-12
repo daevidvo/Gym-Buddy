@@ -3,25 +3,28 @@
     <div class="col-6 mx-auto">
       <div class="card" style="border-radius: 15px;">
         <div class="card-body p-5">
-          <h2 class="text-uppercase text-center mb-5">Login</h2>
+          <h2 class="text-uppercase text-center mb-5">Login</h2> <!-- Title of the login form -->
 
-          <form id="login_form">
+          <form id="login_form"> <!-- Login form -->
 
+            <!-- Email input field -->
             <div class="form-outline mb-4">
               <input type="email" id="login_email" class="form-control form-control-lg">
               <label class="form-label" for="login_email" style="margin-left: 0px;">Email</label>
             </div>
 
+            <!-- Password input field -->
             <div class="form-outline mb-4">
               <input type="password" id="login_password" class="form-control form-control-lg">
               <label class="form-label" for="login_password" style="margin-left: 0px;">Password</label>
             </div>
 
+            <!-- Login button -->
             <div class="d-flex justify-content-center">
               <button type="submit"
                 class="btn btn-success btn-block btn-lg gradient-custom-4 text-white">Login</button>
             </div>
-
+            <!-- Link to the sign-up page -->
             <p class="text-center text-muted mt-5 mb-0">Don't have an account? <a href="/profile/signup"
                 class="fw-bold text-body"><u>Sign up here</u></a></p>
 
@@ -33,5 +36,5 @@
   </div>
 </div>
 
-
+<!-- JavaScript file for the login form -->
 <script src="/js/login.js"></script>

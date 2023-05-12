@@ -12,27 +12,28 @@
   referrerpolicy="no-referrer"
 />
 <div class="users">
-  {{#each users}}
+  {{#each users}} <!-- Iterate through the list of users -->
     <div class="container userCard">
       <div class="row">
         <div class="col-lg-6 col-md-9 mx-auto">
           <div class="card" style="border-radius: 15px;">
             <div class="card-body p-5">
               <h2 class="text-uppercase text-center mb-5" data-id="{{id}}">
-                {{userName}}
+                {{userName}} <!-- Display the username of the current user -->
               </h2>
 
+              <!-- Card displaying user's information -->
               <div class="card text-center">
                 <div class="card-header">
-                  <h4>Age: {{age}}</h4>
+                  <h4>Age: {{age}}</h4>  <!-- Display the age of the current user -->
                 </div>
                 <div class="card-body">
                   <h5 class="card-title">Bio</h5>
-                  <p class="card-text">{{bio}}</p>
+                  <p class="card-text">{{bio}}</p> <!-- Display the bio of the current user -->
                 </div>
                 <div class="card-footer text-muted">
                   <h5>Training Goals</h5>
-                  <p>{{training_goals}}</p>
+                  <p>{{training_goals}}</p> <!-- Display the training goals of the current user -->
                 </div>
               </div>
 
@@ -40,6 +41,7 @@
           </div>
         </div>
       </div>
+      <!-- Buttons to like or dislike a user -->
       <div style="position:relative; top:-60px;">
         <div class="d-flex justify-content-center mt-3">
           <button
@@ -62,5 +64,6 @@
   {{/each}}
 </div>
 
+<!-- Stylesheet and JavaScript files for the homepage -->
 <link rel="stylesheet" href="/css/homepage.css" />
 <script defer src="/js/homepage.js"></script>

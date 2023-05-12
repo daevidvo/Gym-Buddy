@@ -3,7 +3,10 @@
     <input id="input" autocomplete="off" /><button type="submit">Send</button>
 </form>
 
+<!-- JavaScript - Socket.IO -->
 <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
+
+<!-- JavaScript - Application -->
 <script>
     var socket = io('ws://localhost:3002');
 
@@ -11,6 +14,7 @@
     var form = document.getElementById('form');
     var input = document.getElementById('input');
 
+    // Submit form event listener
     form.addEventListener('submit', function (e) {
         e.preventDefault();
         if (input.value) {
@@ -18,7 +22,8 @@
             input.value = '';
         }
     });
-
+    
+    // Socket event listener
     socket.on('chat message', function (msg) {
         var item = document.createElement('li');
         item.textContent = msg;
