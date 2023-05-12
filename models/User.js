@@ -5,7 +5,9 @@ const sequelize = require('../config/connection');
 
 // Define User model
 class User extends Model {
+   // Define a method for checking the user's password
     checkPassword(loginPw) {
+      // Use bcrypt to compare the hashed loginPw with the user's stored password
       return bcrypt.compareSync(loginPw, this.password);
     }
   }
@@ -13,6 +15,7 @@ class User extends Model {
   // Define User fields and validations
 User.init(
     {
+      // Define the table columns and their data types
         id: {
           type: DataTypes.INTEGER,
           allowNull: false,

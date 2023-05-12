@@ -14,7 +14,7 @@ router.use('/test', testRoute)
 // home route
 router.get("/", withAuth, async (req, res) => {
   try {
-    
+    // Retrieve all user data except for their email and password
     const userData = await User.findAll({
       attributes: { exclude: ["email", "password"] },
     });
@@ -25,13 +25,13 @@ router.get("/", withAuth, async (req, res) => {
       res.status(400).json({ message: "error in retrieving user data" });
     }
 
-    // stops the user from seeing their own profile in the homepage
+     // Remove current user from the list of users to prevent seeing their own profile on the homepage
     for (let x=0;x<users.length;x+=1) {
       if (req.session.user_id === users[x].id) {
         users.splice(x, 1)
       }
     }
-
+    // Render the homepage template with the retrieved user data
     res.render("homepage", {
       logged_in: req.session.logged_in,
       users
