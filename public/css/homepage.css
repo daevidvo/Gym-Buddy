@@ -3,7 +3,6 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    position: relative;
     opacity: 0;
     transition: opacity 0.1 ease-in-out;
 }
@@ -14,14 +13,21 @@
 
 .userCard {
     overflow: hidden;
-    /* position: absolute; */
     will-change: transform;
     transition: all 0.3s ease-in-out;
+    position: absolute;
+    top:10vh;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
     cursor: grab;
 }
 
 .row{
     pointer-events: none;
+    display: flex;
+    justify-content: center;
 }
 
 .moving.userCard {
