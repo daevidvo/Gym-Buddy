@@ -7,11 +7,13 @@ router.get('/', async (req, res) => {
       // Get the current user's ID from their session
       const currentUserId = req.session.id;
       
+      // Find all Matches where user1Id is the current user and user2Id is the specified user
       const matchData = await Matches.findAll({
         where: {
            user1Id: currentUserId,
            user2Id: req.body.user2Id
         },
+        // Include the user1 and user2 models, with only the id and username attributes
         include: [
           {
             model: User,
@@ -25,8 +27,10 @@ router.get('/', async (req, res) => {
           }
         ]
       });
+      // Send the match data as a JSON response with a 200 status code
       res.status(200).json(matchData);
     } catch (err) {
+      // Send any errors as a JSON response with a 500 status code
       res.status(500).json(err);
     }
   });
@@ -38,9 +42,9 @@ router.post('/', async (req, res) => {
   try {
     const userId = req.session.user_id; // Get the user ID from session
     const matchData = await Matches.create({ user_id: userId, connect_id: req.body.connect_id }); // Add user ID to new match
-    res.status(200).json(matchData);
+    res.status(200).json(matchData); // Send the match data as a JSON response with a 200 status code
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err);// Send any errors as a JSON response with a 500 status code
   }
 });
 

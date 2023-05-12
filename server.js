@@ -47,16 +47,19 @@ app.use(express.static(path.join(__dirname, "public")));
 // routes
 app.use(routes);
 
+// Define an asynchronous function to start the server
 async function startServer() {
-  await sequelize.sync({ force: false });
-  const server = app.listen(PORT, () => console.log(`App listening on ${PORT}`));
+  await sequelize.sync({ force: false });  // Sync the Sequelize models with the database
+  const server = app.listen(PORT, () => console.log(`App listening on ${PORT}`)); // Start the server listening on the specified PORT
 
+  // Set up Socket.IO on the server
   const io = require("socket.io")(server);
 
+  // Define an event listener for when a client connects to the Socket.IO server
   io.on("connection", (socket) => {
     console.log("connected");
     socket.on("chat message", (msg) => {
-      io.emit("chat message", msg);
+      io.emit("chat message", msg); // Emit the chat message to all connected clients
     });
   });
 }
@@ -64,4 +67,5 @@ async function startServer() {
 // socket
 // const http = require('http').Server(app);
 
+// Call the startServer function to start the server and Socket.IO
 startServer();

@@ -5,7 +5,9 @@ const sequelize = require('../config/connection');
 
 // Define User model
 class User extends Model {
+   // Define a method for checking the user's password
     checkPassword(loginPw) {
+      // Use bcrypt to compare the hashed loginPw with the user's stored password
       return bcrypt.compareSync(loginPw, this.password);
     }
   }
@@ -13,6 +15,7 @@ class User extends Model {
   // Define User fields and validations
 User.init(
     {
+      // Define the table columns and their data types
         id: {
           type: DataTypes.INTEGER,
           allowNull: false,
@@ -63,11 +66,11 @@ User.init(
        // Define hooks to hash password before creating/updating user
         hooks: {
             beforeCreate: async (newUserData) => {
-              newUserData.password = await bcrypt.hash(newUserData.password, 10);
+              newUserData.password = await bcrypt.hash(newUserData.password, 10); // Salt password for 10 rounds
               return newUserData;
             },
             beforeUpdate: async (updatedUserData) => {
-              updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+              updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10); // Salt password for 10 rounds
               return updatedUserData;
             },
           },

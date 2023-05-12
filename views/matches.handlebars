@@ -1,10 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-9 mx-auto text-center">
+      <!-- Title for the matches section -->
       <h2 class="text-white">Your Matches</h2>
       
+       <!-- List of matches -->
       <div class="list-group text-left matchesList">
-        {{#each matchData}}
+        {{#each matchData}}<!-- Each match is a button with a data attribute for the match ID -->
         <button type="button" class="list-group-item list-group-item-action" data-match_id="{{id}}">{{User.userName}}</button>
         {{/each}}
       </div>
@@ -12,5 +14,5 @@
     </div>
   </div>
 </div>
-
+<!-- Script for handling matches interactions -->
 <script src="/js/matches.js"></script>

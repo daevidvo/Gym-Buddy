@@ -6,7 +6,7 @@ const User = require('./User');
 
 class Matches extends Model {} // Define the Matches model
 
-Matches.init(
+Matches.init( // Define the model attributes
     {
         id: {
             type: DataTypes.INTEGER,
@@ -17,8 +17,8 @@ Matches.init(
         user_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: User,
-                key: 'id',
+                model: User,  // Reference the User model
+                key: 'id', // Use the id column of the User model
             },
         },
         connect_id: {
@@ -28,10 +28,10 @@ Matches.init(
                 key: 'id',
             },
         },
-        created_at: {
+        created_at: { //Date stamp for new matches
            type: DataTypes.DATE,
            allowNull: false,
-           defaultValue: DataTypes.NOW,
+           defaultValue: DataTypes.NOW, // Use the current date as the default value
         },
     },
     {
