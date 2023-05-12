@@ -16,7 +16,11 @@
     /* position: absolute; */
     will-change: transform;
     transition: all 0.3s ease-in-out;
-    cursor: grab
+    cursor: grab;
+}
+
+.row{
+    pointer-events: none;
 }
 
 .moving.userCard {

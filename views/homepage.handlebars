@@ -1,40 +1,66 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js" integrity="sha512-UXumZrZNiOwnTcZSHLOfcTs0aos2MzBWHXOHOuB0J/R44QB0dwY5JgfbvljXcklVf65Gc4El6RjZ+lnwd2az2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"
+  integrity="sha512-UXumZrZNiOwnTcZSHLOfcTs0aos2MzBWHXOHOuB0J/R44QB0dwY5JgfbvljXcklVf65Gc4El6RjZ+lnwd2az2g=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
 <div class="users">
-{{#each users}}
-<div class="container userCard">
-  <div class="row">
-    <div class="col-6 mx-auto">
-      <div class="card" style="border-radius: 15px;">
-        <div class="card-body p-5">
-          <h2 class="text-uppercase text-center mb-5"> {{userName}} </h2>
+  {{#each users}}
+    <div class="container userCard">
+      <div class="row">
+        <div class="col-lg-6 col-md-9 mx-auto">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5" data-id="{{id}}">
+                {{userName}}
+              </h2>
 
-          <div class="card text-center">
-            <div class="card-header">
-              <h4>Age: {{age}}</h4>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Bio</h5>
-              <p class="card-text">{{bio}}</p>
-            </div>
-            <div class="card-footer text-muted">
-              <h5>Training Goals</h5>
-              <p>{{training_goals}}</p>
+              <div class="card text-center">
+                <div class="card-header">
+                  <h4>Age: {{age}}</h4>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Bio</h5>
+                  <p class="card-text">{{bio}}</p>
+                </div>
+                <div class="card-footer text-muted">
+                  <h5>Training Goals</h5>
+                  <p>{{training_goals}}</p>
+                </div>
+              </div>
+
             </div>
           </div>
-          
-            <div class="d-flex justify-content-center mt-3">
-              <button type="button" class="btn btn-success mx-2" id="likeButton" style="width: 100px" data-like="{{id}}">Like</button>
-              <button type="button" class="btn btn-dark mx-2" id="dislikeButton" style="width: 100px" data-dislike="{{id}}">Dislike</button>
-            </div>
-
+        </div>
+      </div>
+      <div style="position:relative; ">
+        <div class="d-flex justify-content-center mt-3">
+          <button
+            type="button"
+            class="btn btn-dark mx-2"
+            id="dislikeButton"
+            style="width: 100px"
+            data-dislike="{{id}}"
+          >Dislike</button>
+          <button
+            type="button"
+            class="btn btn-success mx-2"
+            id="likeButton"
+            style="width: 100px"
+            data-like="{{id}}"
+          >Like</button>
         </div>
       </div>
     </div>
-  </div>
-</div>
-{{/each}}
+  {{/each}}
 </div>
 
-<link rel="stylesheet" href="/css/homepage.css">
+<link rel="stylesheet" href="/css/homepage.css" />
 <script defer src="/js/homepage.js"></script>
