@@ -1,24 +1,3 @@
-// create matches functionality
-const likeDislikeFunction = (event) => {
-    event.stopPropagation();
-
-    if(event.target.dataset.like) {
-        const connect_id = event.target.dataset.like
-
-        const response = fetch('/api/match/', {
-            method: 'POST',
-            body: JSON.stringify({connect_id}),
-            headers: { "Content-Type": "application/json" }
-        })
-
-        if (!response.status == 200) {
-            alert(`Please try again \n Error: ${response.statusText}`)
-        }
-    }
-}
-
-document.querySelector('.users').addEventListener('click', likeDislikeFunction)
-
 // hammerjs
 
 let allCards = document.querySelectorAll('.userCard')
@@ -69,6 +48,8 @@ allCards.forEach((el) => {
         event.target.classList.toggle('removed', !keepCard)
 
         if (keepCard) {
+            event.target.style.transform = '';
+        } else {
             let endX = Math.max(Math.abs(event.velocityX) * moveOutWidth, moveOutWidth);
             let toX = event.deltaX > 0 ? endX : -endX;
             let endY = Math.abs(event.velocityY) * moveOutWidth;
@@ -79,6 +60,21 @@ allCards.forEach((el) => {
 
             event.target.style.transform = 'translate(' + toX + 'px, ' + (toY + event.deltaY) + 'px) rotate(' + rotate + 'deg)';
             initCards()
+
+            if(toX > 0) {
+                const connect_id = event.target.querySelector('[data-id]').dataset.id
+
+                const response = fetch('/api/match/', {
+                    method: 'POST',
+                    body: JSON.stringify({connect_id}),
+                    headers: { "Content-Type": "application/json" }
+                })
+        
+                if (!response.status == 200) {
+                    alert(`Please try again \n Error: ${response.statusText}`)
+                }
+            }
+
         }
     })
 })
