@@ -17,8 +17,8 @@ Matches.init( // Define the model attributes
         user_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: User,
-                key: 'id',
+                model: User,  // Reference the User model
+                key: 'id', // Use the id column of the User model
             },
         },
         connect_id: {
@@ -31,7 +31,7 @@ Matches.init( // Define the model attributes
         created_at: { //Date stamp for new matches
            type: DataTypes.DATE,
            allowNull: false,
-           defaultValue: DataTypes.NOW,
+           defaultValue: DataTypes.NOW, // Use the current date as the default value
         },
     },
     {

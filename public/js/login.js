@@ -1,3 +1,4 @@
+// This code block defines an asynchronous function 'loginFormHandler' that handles the form submission for the login page.
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
@@ -21,7 +22,7 @@ const loginFormHandler = async (event) => {
     }
   }
 };
-
+// Attach an event listener to the login form and call the loginFormHandler function when the form is submitted
 document
   .querySelector("#login_form")
   .addEventListener("submit", loginFormHandler);
