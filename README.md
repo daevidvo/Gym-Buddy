@@ -1,10 +1,10 @@
-# 🏋️GYMDER
+# 🏋️GYM BUDDY
 
 ## Overview
 
 [Visit the Deployed Site](https://gymder-dv-sh-kp.herokuapp.com/ )
 
-Finding a workout partner can often be difficult and scary for some people. Gymder combats this problem by offering an application that can assist with finding and connecting you with potential gym partners. Simply create a profile and enter your bio and your training goals and match with other users you feel have similar goals.
+Finding a workout partner can often be difficult and scary for some people. Gym Buddy combats this problem by offering an application that can assist with finding and connecting you with potential gym partners. Simply create a profile and enter your bio and your training goals and match with other users you feel have similar goals.
 
 ------------------
 
