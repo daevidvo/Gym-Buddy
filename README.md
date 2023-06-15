@@ -1,4 +1,4 @@
-# 🏋️GYMDER
+# 🏋️GYM BUDDY
 
 ## Overview
 
